@@ -63,7 +63,7 @@ Type: `Stream` or `Function`
 
 Required. A stream or a function providing a stream.
 
-#### expr1
+#### expr2
 Type: `Stream` or `Function`
 Default value: `Stream.PassThrough`
 
