@@ -1,0 +1,44 @@
+{
+  "name": "gulp-cond",
+  "description": "Ternary operator for Gulp.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/nfroidure/gulp-cond",
+  "author": {
+    "name": "Nicolas Froidure",
+    "url": "http://www.insertafter.com/blog.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nfroidure/gulp-cond.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nfroidure/gulp-cond/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/nfroidure/gulp-cond/blob/master/LICENSE"
+    }
+  ],
+  "main": "src/index.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "mocha tests/*.mocha.js"
+  },
+  "keywords": [
+    "gulpplugin",
+    "gulp",
+    "gulp-plugin",
+    "font",
+    "svg",
+    "ttf",
+    "converter"
+  ],
+  "devDependencies": {
+    "gulp-util": "~2.2.14",
+    "mocha": "~1.16.2",
+    "event-stream": "~3.0.20"
+  }
+}
