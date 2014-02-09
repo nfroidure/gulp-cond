@@ -31,10 +31,9 @@
     "gulpplugin",
     "gulp",
     "gulp-plugin",
-    "font",
-    "svg",
-    "ttf",
-    "converter"
+    "condition",
+    "operator",
+    "ternary"
   ],
   "devDependencies": {
     "gulp-util": "~2.2.14",
