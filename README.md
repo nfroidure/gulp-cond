@@ -1,4 +1,4 @@
-# gulp-cond [![NPM version](https://badge.fury.io/js/gulp-cond.png)](https://npmjs.org/package/gulp-cond) [![Build status](https://secure.travis-ci.org/nfroidure/gulp-cond.png)](https://travis-ci.org/nfroidure/gulp-cond)
+# gulp-cond [![NPM version](https://badge.fury.io/js/gulp-cond.png)](https://npmjs.org/package/gulp-cond) [![Build status](https://secure.travis-ci.org/nfroidure/gulp-cond.png)](https://travis-ci.org/nfroidure/gulp-cond) [![Dependency Status](https://david-dm.org/nfroidure/gulp-cond.png)](https://david-dm.org/nfroidure/gulp-cond) [![devDependency Status](https://david-dm.org/nfroidure/gulp-cond/dev-status.png)](https://david-dm.org/nfroidure/gulp-cond#info=devDependencies)
 > A ternary operator for [Gulp](http://gulpjs.com/).
 
 ## Usage
