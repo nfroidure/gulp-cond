@@ -1,7 +1,6 @@
-var Stream = require('stream');
+var Stream = require('readable-stream');
 
 const PLUGIN_NAME = 'gulp-cond';
-
 
 // Plugin function
 function gulpCond(condition, expr1, expr2) {
