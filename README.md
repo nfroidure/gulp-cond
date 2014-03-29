@@ -71,6 +71,11 @@ Default value: `Stream.PassThrough`
 
 A stream or a function providing a stream.
 
+## Stats
+
+[![NPM](https://nodei.co/npm/gulp-cond.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-iconfont/)
+[![NPM](https://nodei.co/npm-dl/gulp-cond.png)](https://nodei.co/npm/gulp-iconfont/)
+
 ### Contributing / Issues
 
 You may want to contribute to this project, pull requests are welcome if you
