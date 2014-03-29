@@ -10,9 +10,9 @@ function gulpCond(condition, expr1, expr2) {
   ;
 
   if(value) {
-    outStream = expr1 instanceof Stream ? expr1 : expr1();
+    outStream = 'function' == typeof expr1 ? expr1() : expr1;
   } else if(expr2) {
-    outStream = expr2 instanceof Stream ? expr2 : expr2();
+    outStream = 'function' == typeof expr2 ? expr2() : expr2;
   } else {
     outStream = new Stream.PassThrough({objectMode: true});
   }
