@@ -3,7 +3,7 @@
 var assert = require('assert')
   , es = require('event-stream')
   , gulpCond = require(__dirname + '/../src/index.js')
-  , Stream = require('stream')
+  , Stream = require('readable-stream')
   , gutil = require('gulp-util')
 ;
 

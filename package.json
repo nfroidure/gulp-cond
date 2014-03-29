@@ -39,11 +39,11 @@
   ],
   "devDependencies": {
     "gulp-util": "~2.2.14",
-    "mocha": "~1.17.1",
-    "event-stream": "~3.1.0",
+    "mocha": "~1.18.2",
+    "event-stream": "~3.1.1",
     "mocha-lcov-reporter": "0.0.1",
-    "coveralls": "~2.7.1",
-    "istanbul": "~0.2.4"
+    "coveralls": "~2.10.0",
+    "istanbul": "~0.2.6"
   },
   "dependencies": {
     "readable-stream": "^1.0.26-2"
