@@ -1,27 +1,25 @@
 'use strict';
 
-var assert = require('assert')
-  , es = require('event-stream')
-  , gulpCond = require(__dirname + '/../src/index.js')
-  , Stream = require('readable-stream')
-  , gutil = require('gulp-util')
-;
+var assert = require('assert');
+var gulpCond = require('../src');
+var Stream = require('readable-stream');
+var File = require('vinyl');
 
 // Helpers to create streams
 function getStream() {
-  var stream = new Stream.PassThrough({objectMode: true});
-  setImmediate(function() {
-    stream.write(new gutil.File({
+  var stream = Stream.PassThrough({objectMode: true});
+  setImmediate(function () {
+    stream.write(new File({
       path: 'file.foo',
       contents: null
     }));
-    setImmediate(function() {
-      stream.write(new gutil.File({
+    setImmediate(function () {
+      stream.write(new File({
         path: 'file.foo',
         contents: null
       }));
-      setImmediate(function() {
-        stream.write(new gutil.File({
+      setImmediate(function () {
+        stream.write(new File({
           path: 'file.foo',
           contents: null
         }));
@@ -33,13 +31,13 @@ function getStream() {
 }
 
 function getTrans(prefix) {
-  var stream = new Stream.Transform({objectMode: true});
-  stream._transform = function(file, unused, cb) {
-    file.path = prefix + file.path;
-    this.push(file);
-    cb();
-  };
-  return stream;
+  return Stream.Transform({
+    objectMode: true,
+    transform: function(file, unused, cb) {
+      file.path = prefix + file.path;
+      cb(null, file);
+    }
+  });
 }
 
 describe('gulp-cond', function() {
@@ -49,11 +47,9 @@ describe('gulp-cond', function() {
     describe('as a value', function() {
 
       it('should work with stream', function(done) {
-
-        var n = 0
-          , ended1 = false
-          , ended2 = false
-        ;
+        var n = 0;
+        var ended1 = false;
+        var ended2 = false;
 
         getStream()
           .pipe(gulpCond(true, getTrans('1').once('end', function() {
@@ -61,34 +57,33 @@ describe('gulp-cond', function() {
           }), getTrans('2').once('end', function() {
             ended2 = true;
           })))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, '1file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(ended1, true);
             assert.equal(ended2, false);
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
       it('should work with fn returning a stream', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(true, getTrans.bind(null, '1'), getTrans.bind(null, '2')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, '1file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
     });
@@ -96,41 +91,39 @@ describe('gulp-cond', function() {
     describe('as a function', function() {
 
       it('should work', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(function () {
             return true;
           }, getTrans('1'), getTrans('2')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, '1file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
       it('should work with fn returning a stream', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(function () {
             return true;
           }, getTrans.bind(null, '1'), getTrans.bind(null, '2')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, '1file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
     });
@@ -142,37 +135,35 @@ describe('gulp-cond', function() {
     describe('as a value', function() {
 
       it('should work with stream', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(false, getTrans('1'), getTrans('2')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, '2file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
       it('should work with fn returning a stream', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(false, getTrans.bind(null, '1'), getTrans.bind(null, '2')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, '2file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
     });
@@ -180,41 +171,39 @@ describe('gulp-cond', function() {
     describe('as a function', function() {
 
       it('should work', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(function () {
             return false;
           }, getTrans('1'), getTrans('2')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, '2file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
       it('should work with fn returning a stream', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(function () {
             return false;
           }, getTrans.bind(null, '1'), getTrans.bind(null, '2')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, '2file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
     });
@@ -226,37 +215,35 @@ describe('gulp-cond', function() {
     describe('as a value', function() {
 
       it('should work with stream', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(false, getTrans('1')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, 'file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
       it('should work with fn returning a stream', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(false, getTrans.bind(null, '1')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, 'file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
     });
@@ -264,41 +251,39 @@ describe('gulp-cond', function() {
     describe('as a function', function() {
 
       it('should work', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(function () {
             return false;
           }, getTrans('1')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, 'file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
       it('should work with fn returning a stream', function(done) {
-
         var n = 0;
 
         getStream()
           .pipe(gulpCond(function () {
             return false;
           }, getTrans.bind(null, '1'), getTrans.bind(null, '2')))
-          .pipe(es.through(function(file) {
+          .on('data', function(file) {
             assert.equal(file.path, '2file.foo');
             assert.equal(file.contents, null);
             n++;
-          }, function() {
+          })
+          .on('end', function () {
             assert.equal(n, 3);
             done();
-          }));
-
+          });
       });
 
     });

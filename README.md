@@ -1,7 +1,11 @@
 # gulp-cond
 > A ternary operator for [Gulp](http://gulpjs.com/).
 
-[![NPM version](https://badge.fury.io/js/gulp-cond.png)](https://npmjs.org/package/gulp-cond) [![Build status](https://secure.travis-ci.org/nfroidure/gulp-cond.png)](https://travis-ci.org/nfroidure/gulp-cond) [![Dependency Status](https://david-dm.org/nfroidure/gulp-cond.png)](https://david-dm.org/nfroidure/gulp-cond) [![devDependency Status](https://david-dm.org/nfroidure/gulp-cond/dev-status.png)](https://david-dm.org/nfroidure/gulp-cond#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/nfroidure/gulp-cond/badge.png?branch=master)](https://coveralls.io/r/nfroidure/gulp-cond?branch=master)
+[![NPM version](https://badge.fury.io/js/gulp-cond.png)](https://npmjs.org/package/gulp-cond)
+[![Build status](https://secure.travis-ci.org/nfroidure/gulp-cond.png)](https://travis-ci.org/nfroidure/gulp-cond)
+[![Dependency Status](https://david-dm.org/nfroidure/gulp-cond.png)](https://david-dm.org/nfroidure/gulp-cond)
+[![devDependency Status](https://david-dm.org/nfroidure/gulp-cond/dev-status.png)](https://david-dm.org/nfroidure/gulp-cond#info=devDependencies)
+[![Coverage Status](https://coveralls.io/repos/nfroidure/gulp-cond/badge.png?branch=master)](https://coveralls.io/r/nfroidure/gulp-cond?branch=master)
 
 ## Usage
 
@@ -13,10 +17,9 @@ npm install --save-dev gulp-cond
 
 Then, use it to conditionnaly pipe plugins in your `gulpfile.js`:
 
-```javascript
-var cond = require('gulp-cond')
-  , prod = gulp.env.prod
-;
+```js
+var cond = require('gulp-cond');
+var prod = gulp.env.prod;
 
 // Images
 gulp.task('build_images', function() {
@@ -32,10 +35,9 @@ gulp.task('build_images', function() {
 Alternatively, you can provide plugin functions instead of streams to
   instanciate streams only when needed :
 
-```javascript
-var cond = require('gulp-cond')
-  , prod = gulp.env.prod
-;
+```js
+var cond = require('gulp-cond');
+var prod = gulp.env.prod;
 
 // Images
 gulp.task('build_images', function() {

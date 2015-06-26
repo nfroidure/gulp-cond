@@ -1,13 +1,10 @@
 var Stream = require('readable-stream');
 
-const PLUGIN_NAME = 'gulp-cond';
+var PLUGIN_NAME = 'gulp-cond';
 
-// Plugin function
 function gulpCond(condition, expr1, expr2) {
-
-  var value = 'function' == typeof condition ? condition() : condition
-    , outStream
-  ;
+  var value = 'function' == typeof condition ? condition() : condition;
+  var outStream;
 
   if(value) {
     outStream = 'function' == typeof expr1 ? expr1() : expr1;
@@ -18,9 +15,6 @@ function gulpCond(condition, expr1, expr2) {
   }
 
   return outStream;
-
 };
 
-// Export the plugin main function
 module.exports = gulpCond;
-
