@@ -1,11 +1,11 @@
 # gulp-cond
 > A ternary operator for [Gulp](http://gulpjs.com/).
 
-[![NPM version](https://badge.fury.io/js/gulp-cond.png)](https://npmjs.org/package/gulp-cond)
-[![Build status](https://secure.travis-ci.org/nfroidure/gulp-cond.png)](https://travis-ci.org/nfroidure/gulp-cond)
-[![Dependency Status](https://david-dm.org/nfroidure/gulp-cond.png)](https://david-dm.org/nfroidure/gulp-cond)
-[![devDependency Status](https://david-dm.org/nfroidure/gulp-cond/dev-status.png)](https://david-dm.org/nfroidure/gulp-cond#info=devDependencies)
-[![Coverage Status](https://coveralls.io/repos/nfroidure/gulp-cond/badge.png?branch=master)](https://coveralls.io/r/nfroidure/gulp-cond?branch=master)
+[![NPM version](https://badge.fury.io/js/gulp-cond.svg)](https://npmjs.org/package/gulp-cond)
+[![Build status](https://secure.travis-ci.org/nfroidure/gulp-cond.svg)](https://travis-ci.org/nfroidure/gulp-cond)
+[![Dependency Status](https://david-dm.org/nfroidure/gulp-cond.svg)](https://david-dm.org/nfroidure/gulp-cond)
+[![devDependency Status](https://david-dm.org/nfroidure/gulp-cond/dev-status.svg)](https://david-dm.org/nfroidure/gulp-cond#info=devDependencies)
+[![Coverage Status](https://coveralls.io/repos/nfroidure/gulp-cond/badge.svg?branch=master)](https://coveralls.io/r/nfroidure/gulp-cond?branch=master)
 
 ## Usage
 
