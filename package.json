@@ -28,7 +28,8 @@
   "homepage": "https://github.com/nfroidure/gulp-cond",
   "author": {
     "name": "Nicolas Froidure",
-    "url": "http://www.insertafter.com/blog.html"
+    "email": "nicolas.froidure@insertafter.com",
+    "url": "https://insertafter.com/en/index.html"
   },
   "repository": {
     "type": "git",

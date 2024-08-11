@@ -38,7 +38,7 @@ gulp.task('build_images', function() {
 ```
 
 Alternatively, you can provide plugin functions instead of streams to
-  instanciate streams only when needed :
+  instantiate streams only when needed :
 
 ```js
 import cond from 'gulp-cond';
@@ -81,14 +81,14 @@ A stream or a function providing a stream.
 ### Contributing / Issues
 
 You may want to contribute to this project, pull requests are welcome if you
- accept to publish under the MIT licence.
+ accept to publish under the MIT license.
 
 
 
 [//]: # (::contents:end)
 
 # Authors
-
+- [Nicolas Froidure](https://insertafter.com/en/index.html)
 
 # License
 [MIT](https://github.com/nfroidure/gulp-cond/blob/main/LICENSE)
