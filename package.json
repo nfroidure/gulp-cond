@@ -24,7 +24,7 @@
   },
   "name": "gulp-cond",
   "description": "Ternary operator for Gulp.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "homepage": "https://github.com/nfroidure/gulp-cond",
   "author": {
     "name": "Nicolas Froidure",
